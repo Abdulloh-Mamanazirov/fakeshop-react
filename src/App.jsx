@@ -1,17 +1,13 @@
-import { Link, Route, Routes } from "react-router-dom";
-import About from "./Pages/About";
+import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
-import { HashLink } from "react-router-hash-link";
+import More from "./Pages/More";
 
 function App() {
   return (
     <div>
-      State + Props
-      <Link to={"/"}>Home</Link>
-      <HashLink to={"/about#id"}>About</HashLink>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/more/:itemId" element={<More />} />
       </Routes>
     </div>
   );

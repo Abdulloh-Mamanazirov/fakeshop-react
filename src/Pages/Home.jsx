@@ -1,43 +1,44 @@
-import React, { useState } from "react";
-import Footer from "../Components/Footer";
-import Header from "../Components/Header";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Product from "../Components/Product";
 
-// Rerender
-// 1) state
-// 2) props
-// 3) Parent rerender
-
-const Home = () => {
+const About = () => {
+  const [items, setItems] = useState([]);
   const [count, setCount] = useState(0);
-  const [theme, setTheme] = useState("light");
-  const [open, setOpen] = useState(false);
 
-  function handleClick() {
+  function handleIncrease() {
     setCount(count + 1);
   }
 
-  function handleChangeTheme() {
-    setTheme(theme === "light" ? "dark" : "light");
-  }
+  function handleDecrease() {
+    setCount(count - 1);
+  }  
 
-  function handleOpenSidebar() {
-    setOpen(!open);
-  }
-
-  console.log(theme);
+  useEffect(() => {
+    fetch(`https://fakestoreapi.com/products?limit=${count}`)
+      .then((res) => res.json())
+      .then((json) => setItems(json));
+  }, [count]);
 
   return (
-    <div className={theme}>
-      <Header />
-      Home
-      <Footer />
-      <button onClick={handleOpenSidebar}>Toggle SideBar</button>
-      <button onClick={handleChangeTheme}>Change Theme</button>
-      <button onClick={handleClick}>Click to add one</button>
-      {count}
-      {open && <aside>SideBar</aside>}
+    <div>
+      <div className="nav">
+        <Link className="logo" to={"/"}>FakeShop</Link>
+        <div className="btns">
+          <button onClick={handleDecrease}>-</button>
+          {count}
+          <button onClick={handleIncrease}>+</button>
+        </div>
+      </div>
+      <div className="productWrapper">
+        {items.length === 0 ? (
+          <h1 className="loading">Loading...</h1>
+        ) : (
+          items.map((item) => <Product product={item} key={item.id} />)
+        )}
+      </div>
     </div>
   );
 };
 
-export default Home;
+export default About;

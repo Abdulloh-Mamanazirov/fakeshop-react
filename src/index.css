@@ -2,3 +2,155 @@
   background: #000;
   color: #fff;
 }
+body{
+  background-color: #eee;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.nav{
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: #eee;
+  border-bottom: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 91%;
+  margin: 0 auto 15px;
+  padding: 5px 0;
+}
+.logo{
+  text-decoration: none;
+  color: #000;
+  font-size: 50px;
+  font-weight: 800;
+  margin: 0;
+  padding: 0;
+}
+.btns{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #fff;
+  padding: 10px 15px;
+  border:1px solid grey;
+  border-radius:10px;
+  font-size: 20px;
+}
+.btns button{
+  font-size: 20px;
+  padding: 0 10px;
+}
+
+.productWrapper{
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.card{
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 15px;
+}
+.card .price{
+  color:rgb(255, 217, 0);
+}
+.card img{
+  width: 300px;
+  height: 340px;
+  object-fit: contain;
+}
+.actionBtns{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn{
+  padding: 5px 10px;
+  border-radius:10px;
+  border: 1px solid grey;
+  font-size: 17px;
+  background-color: rgb(255, 250, 243);
+}
+.btnMore{
+  background-color: rgb(0, 115, 255);
+  text-decoration: none;
+  color: #fff;
+}
+
+.loading{
+  text-align: center;
+}
+
+
+.moreHeader{
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.back{
+  all: unset;
+  background-color: #0077ff;
+  color: #fff;
+  font-weight: 700px;
+  border-radius:10px;
+  border:1px solid grey;
+  cursor: pointer;
+  padding: 10px;
+  transition: all .2s;
+}
+.back:hover{
+  background-color:#006be4;
+}
+.moreItemDetails{
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid grey;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.moreItemDetails-img{
+  width: 400px;
+}
+.moreItemDetails img{
+  width: 100%;
+}
+.moreItemDetails-info{
+  width: 50%;
+}
+
+
+
+@media (max-width:1200px) {
+  .productWrapper{
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+@media (max-width:1000px) {
+  .productWrapper{
+    grid-template-columns: repeat(2,1fr);
+  }
+  .moreItemDetails{
+    flex-direction: column;
+  }
+  .moreItemDetails-info{
+    width: unset;
+  }
+}
+@media (max-width:700px) {
+  .productWrapper{
+    grid-template-columns: repeat(1,1fr);
+  }
+}
